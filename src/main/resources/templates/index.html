@@ -12,10 +12,13 @@
 User: <span sec:authentication="principal.username"></span>
 Role(s): <span sec:authentication="principal.authorities"></span>
 <hr>
+<div sec:authorize="hasRole('MANAGER')">
 <p><a th:href="@{/leaders}">Leadership meeting</a> only for Manager </p>
+</div>
+<div sec:authorize="hasRole('ADMIN')">
 <hr>
 <p><a th:href="@{/systems}">IT System </a> only for IT Managers </p>
-
+</div>
 <form action="#" th:action="@{/logout}" method="post">
     <input type="submit" th:value="Logout">
 </form>
